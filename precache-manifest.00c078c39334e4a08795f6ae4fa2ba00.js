@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5771b739f0ef308b24a9ca8ad04521f5",
+    "revision": "e7893d5003716b6228ecc03be683cabf",
     "url": "/index.html"
   },
   {
-    "revision": "f6cce6dbd3d8770b87df",
+    "revision": "406a1a06de2f9c742749",
     "url": "/static/css/2.30cf01b0.chunk.css"
   },
   {
-    "revision": "5820863d18f2246e65be",
-    "url": "/static/css/main.df757fc5.chunk.css"
+    "revision": "557494825ea2bfa804bc",
+    "url": "/static/css/main.da46b1ec.chunk.css"
   },
   {
-    "revision": "f6cce6dbd3d8770b87df",
-    "url": "/static/js/2.bb9f6b96.chunk.js"
+    "revision": "406a1a06de2f9c742749",
+    "url": "/static/js/2.02a92299.chunk.js"
   },
   {
-    "revision": "5820863d18f2246e65be",
-    "url": "/static/js/main.cd757153.chunk.js"
+    "revision": "557494825ea2bfa804bc",
+    "url": "/static/js/main.606de57f.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -84,11 +84,27 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/_DSC3155-Edit.08a37fa4.jpg"
   },
   {
+    "revision": "77afabc6ba0f0d0912468dd3a4a64aac",
+    "url": "/static/media/afterwedding.77afabc6.png"
+  },
+  {
+    "revision": "46e217b649b1768f44d444ff202a8c12",
+    "url": "/static/media/location.46e217b6.png"
+  },
+  {
     "revision": "43844a6bfcb617058ae347965badd3a9",
     "url": "/static/media/main.43844a6b.jpg"
   },
   {
-    "revision": "6968bb3c4acf44c52bf25f545e2d97f2",
-    "url": "/static/media/rsvp-01.6968bb3c.png"
+    "revision": "6808e24fbdfdfd8391b663d8c5cab280",
+    "url": "/static/media/ourstory.6808e24f.png"
+  },
+  {
+    "revision": "6e72356ae04baf133bfbdadb4fade8ad",
+    "url": "/static/media/photos.6e72356a.png"
+  },
+  {
+    "revision": "daa1b05c6bb876acc0cb57c71b2a37fe",
+    "url": "/static/media/rsvp-01.daa1b05c.png"
   }
 ]);
