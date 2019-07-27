@@ -21,6 +21,7 @@ import Location from './pages/Location';
 import Contact from './pages/Contactus';
 import After from './pages/After';
 import Admin from './pages/Admin';
+import Dashboard from './pages/Dashboard';
 
 export const initializeReactGA = () => {
     ReactGA.initialize('UA-144107894-1');
@@ -50,6 +51,7 @@ const Page = () => {
             <Route path="/contact-us" component={Contact} />
             <Route path="/after-wedding" component={After} />
             <Route path="/admin" component={Admin} />
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </animated.div>
       ))}

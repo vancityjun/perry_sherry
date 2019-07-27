@@ -3,17 +3,10 @@ import Header from '../components/Header';
 import Countdown from "react-countdown-now";
 import firebase from 'firebase';
 import { render } from "react-dom";
+import db from "../firebase/config.js"
+import ReactDom from 'react-dom';
+import Popup from 'react-popup';
 
-      const config = {
-    apiKey: "AIzaSyDWCgs-GilUNpngWoee8NfKUqsnCvgNf3c",
-    authDomain: "perrysherry-c6162.firebaseapp.com",
-    databaseURL: "https://perrysherry-c6162.firebaseio.com",
-    projectId: "perrysherry-c6162",
-    storageBucket: "",
-    messagingSenderId: "153288497020",
-    appId: "1:153288497020:web:9f69c399456b5c2e"
-    };
-    firebase.initializeApp(config);
 
 class Rsvp extends Component{
 	constructor(props){
@@ -24,13 +17,12 @@ class Rsvp extends Component{
 			regdate:'',
 			mode:'rsvp',
 			rsvps: []
-
 		};
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
 	}
 	componentWillMount(){
-
+/*
     firebase.database().ref().child('rsvps').on('child_added', snap => {
         // console.log(snap.toJSON());
         // console.log(snap.val().firstname);
@@ -46,7 +38,18 @@ class Rsvp extends Component{
         });
         console.log(this.state.rsvps);
     });
-    
+    */
+    const rsvpsRef = db.collection('rsvps');
+	let allRsvps = rsvpsRef.get()
+  .then(snapshot => {
+    snapshot.forEach(doc => {
+      console.log(doc.id, '=>', doc.data());
+	    // console.log(this.state.rsvps);
+    });
+  })
+  .catch(err => {
+    console.log('Error getting documents', err);
+  });
   }
 
   	componentDidMount(){
@@ -57,32 +60,32 @@ class Rsvp extends Component{
 		this.setState({[e.target.name]: e.target.value});
 	}
 	onSubmit(e){
-		const Key = firebase.database().ref().child('posts').push().key;
 		e.preventDefault();
-		// console.log(this.state);
-	    firebase.database().ref().child('rsvps').child(`${Key}`).set({
+		db.collection("rsvps").doc().set({
 	        firstname: this.state.firstname,
 	        lastname: this.state.lastname,
-	        regdate: firebase.database.ServerValue.TIMESTAMP,
-	    }).then(() => {
-	      console.log('INSERTED')
-	    }).catch((error) => {
-	      console.log(error).once('value', (data) => {
-	          console.log(data.toJSON());
-	      });
-	    });
+	        regdate: new Date(),
+		})
+		.then(function() {
+		    console.log("Document successfully written!");
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
+		});
 	}
 	submit(){
 	}
 
   render(){
 
-  	const rsvps = this.state.rsvps.map(guest =>
-  			<div className="lists">
-  				<span>{guest}</span>
+  	let rsvps = this.state.rsvps.map(guest => {
+  		return(
+  			<div key="{i}" className="lists">
+  				<span>{guest.firstname}</span>
   				<span>{guest.lastname}</span>
-  			</div>
-  		);
+  			</div>  		
+  			);
+  		});
     return(
     	      <section className={this.state.mode + ' content'}>
     	<Header title={this.state.mode}/>
