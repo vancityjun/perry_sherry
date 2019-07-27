@@ -24,15 +24,6 @@ class Location extends Component{
     return(
     	      <section className={this.state.mode + ' content'}>
       <Header title={this.state.mode}/>
-    	<div>
-    	      <form onSubmit={this.onSubmit} >
-		      	<input type="text" name="firstName" placeholder="first name" value={this.state.firstName} onChange={this.onChange}/>
-		      	<br/>
-		      	<input type="text" name="lastName" placeholder="last name" value={this.state.lastName} onChange={this.onChange}/>
-		      	<br/>
-		      	<button type="submit">Submit</button>
-		      </form>
-    	</div>
       <ReactMapGL
        mapboxApiAccessToken={"pk.eyJ1IjoiZmtzZGoiLCJhIjoiY2p1MnpicHBpMGh0djQwbGs2bmxnZ3NjeiJ9.fyaa64gqxOni7RvrnwhgZQ"}
         {...this.state.viewport}

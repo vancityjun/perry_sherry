@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
+// import Countdown from "react-countdown-now";
 
 import $ from 'jquery';
 
@@ -23,7 +24,7 @@ class Topbar extends Component{
             <li><NavLink to="/ourstory" >our story</NavLink></li>
             <li><NavLink to="/photos">photos</NavLink></li>
             <li><NavLink to="/rsvp">RSVP</NavLink></li>
-            <li><NavLink to="/contact-us">contact us</NavLink></li>
+            <li><NavLink to="/location">location</NavLink></li>
             <li><NavLink to="/after-wedding">after wedding</NavLink></li>
           </ul>
         </nav>
