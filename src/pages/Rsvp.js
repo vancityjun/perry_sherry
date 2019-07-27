@@ -15,33 +15,6 @@ import { render } from "react-dom";
     };
     firebase.initializeApp(config);
 
-    const clist = [
-  {
-    id: 'a',
-    firstname: 'Robin',
-    lastname: 'Wieruch',
-    year: 1988,
-  },
-  {
-    id: 'b',
-    firstname: 'Dave',
-    lastname: 'Davidds',
-    year: 1990,
-  },
-];
-
-const ComplexList = () => (
-  <ul>
-    {clist.map(item => (
-      <li key={item.id}>
-        <div>{item.id}</div>
-        <div>{item.firstname}</div>
-        <div>{item.lastname}</div>
-        <div>{item.year}</div>
-      </li>
-    ))}
-  </ul>
-);
 class Rsvp extends Component{
 	constructor(props){
 		super(props);
