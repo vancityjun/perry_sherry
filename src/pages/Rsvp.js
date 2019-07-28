@@ -22,35 +22,7 @@ class Rsvp extends Component{
 		this.onChange = this.onChange.bind(this);
 	}
 	componentWillMount(){
-/*
-    firebase.database().ref().child('rsvps').on('child_added', snap => {
-        // console.log(snap.toJSON());
-        // console.log(snap.val().firstname);
-        var list = [];
-        snap.forEach(function(childSnapshot){
-        	var item = childSnapshot.val();
-
-        	list.push(item);
-        });
-        // console.log(list);
-        this.setState({
-        	rsvps: list
-        });
-        console.log(this.state.rsvps);
-    });
-    */
-    const rsvpsRef = db.collection('rsvps');
-	let allRsvps = rsvpsRef.get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
-      console.log(doc.id, '=>', doc.data());
-	    // console.log(this.state.rsvps);
-    });
-  })
-  .catch(err => {
-    console.log('Error getting documents', err);
-  });
-  }
+	}
 
   	componentDidMount(){
 
@@ -67,7 +39,7 @@ class Rsvp extends Component{
 	        regdate: new Date(),
 		})
 		.then(function() {
-		    console.log("Document successfully written!");
+		    alert("Document successfully written!");
 		})
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);

@@ -39,7 +39,7 @@ h1{margin: 0;}
   clear: both;
 }
 h1, h2, h3, h4, h5{
-    font-weight: 300;
+    font-weight: 100;
 }
 body{
 	font-family: 'Cormorant Garamond', serif;
@@ -54,6 +54,9 @@ input{
     margin-bottom:20px;
     border-radius: 4px;
     width:60%;
+    @media screen and (max-width: 576px){
+        width: 100%;
+    }
 }
 textarea{
     padding: 10px;
@@ -82,7 +85,8 @@ nav{
   display: flex;
   align-items: center;
   justify-content: center;
-  // background: rgba(255, 255, 255, 0.7);
+  background: #fff;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   .navList{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -120,6 +124,9 @@ nav{
 .countdown{
     font-size:3vw;
     margin-bottom: 40px;
+    @media screen and (max-width: 576px){
+        font-size: 1.5rem;
+    }
 }
 section{
     min-height: 100vh;
@@ -135,6 +142,9 @@ section{
             padding: 0 8%;
             margin-bottom: 50px;
             box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.3);
+            @media screen and (max-width: 576px){
+                height: 30vh;
+            }
             h1{
                 font-size:6vw;
             }
@@ -149,6 +159,21 @@ section{
             .title{
                 text-transform: capitalize;
             }            
+        }
+    }
+    &.menu{
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top:0;
+        width: 100%;
+        padding: 3em;
+        display: flex;
+        align-items: center;
+        ul{
+            font-size: 2rem;
+            line-height: 2;
+            text-transform: capitalize;
         }
     }
 }
@@ -181,6 +206,9 @@ section{
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(10, 1fr);
   grid-gap:20px;
+  @media screen and (max-width: 576px){
+    grid-gap:10px;
+  }
   .imageBox{
     overflow: hidden;
     display: flex;
@@ -206,12 +234,134 @@ section{
     background: $background-color;
     text-align: center;
     padding: 50px;
+    @media screen and (max-width: 576px){
+        padding: 25px;
+    }
     h2{
         margin-bottom: 20px;
         font-size: 3vw;
         text-transform: capitalize;
+        @media screen and (max-width: 576px){
+            font-size: 1.5rem;
+        }
     }
     &.contactForm{
     }
 }
+//location
+.locator{
+    width: 50px;
+}
  
+//dashboard
+.dashboard{
+    .list{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        table{
+            font-size: 24px;
+            min-width: 50%;
+            text-align: center;
+            th, td{
+                padding: 5px;
+            }
+            th{
+                background: $primary-color;
+                color:#fff;
+                text-transform: capitalize;
+                font-weight: 300;
+            }
+            tr{
+                background:#fff1f1;
+                &:nth-child(odd){
+                    background: $background-color;
+                }
+            }
+        }
+    }
+}
+
+// toggle button
+
+$hamburger-color: #666;
+$hamburger-width: 50px;
+$hamburger-height: 50px;
+$hamburger-zindex: 1100;
+
+.toggleButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  height: $hamburger-height;
+  outline: none;
+  padding: 0;
+  pointer-events: initial;
+  position: fixed;
+  left: 10px;
+  vertical-align: middle;
+  width: $hamburger-width;
+  z-index: $hamburger-zindex;
+
+  span {
+    background-color: $hamburger-color;
+    content: "";
+    display: block;
+    height: 2px;
+    left: calc(50% - 13px );
+    position: absolute;
+    top: calc(50% - 1px );
+    transform-origin: 50% 50%;
+    transition: background-color 0.2s ease-in-out, top 0.2s 0.2s ease-out,  transform 0.2s linear;
+    width: 26px;
+
+    &:before, &:after {
+      background-color: $hamburger-color;
+      content: "";
+      display: block;
+      height: 2px;
+      position: absolute;
+      transform-origin: 50% 50%;
+      transition: background-color 0.2s ease-in-out, top 0.2s 0.2s ease-out,  transform 0.2s linear;
+      width: 26px;
+    }
+
+    &:before {
+      top: 7px;
+    }
+
+    &:after {
+      top: -7px;
+    }
+/*     @media screen and(max-width:576px){
+    background-color: #fff;
+    &:before, &:after{
+      background-color: #fff;
+    }
+  }
+   */  }
+
+  &.active {
+    span {
+      background-color: transparent;
+      transition: background 0.2s ease-out;
+
+      &:before, &:after {
+        transition: top 0.2s ease-out, transform 0.2s 0.2s ease-out;
+      }
+
+      &:before {
+        top: 0;
+        transform: rotate3d(0, 0, 1, -45deg);
+        // background: #fff;
+      }
+
+      &:after {
+        top: 0;
+        transform: rotate3d(0, 0, 1, 45deg);
+        // background: #fff;
+      }
+    }
+  }
+}

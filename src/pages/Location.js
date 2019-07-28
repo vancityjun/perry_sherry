@@ -30,7 +30,7 @@ class Location extends Component{
         onViewportChange={(viewport) => this.setState({viewport})}
       >
       <Marker latitude={49.125} longitude={-122.76} offsetLeft={-20} offsetTop={-10}>
-          <div>You are here</div>
+          <div className="locator"><img src={require('../icons/location.svg')} alt="location"/></div>
         </Marker>
       </ReactMapGL>
     	</section>

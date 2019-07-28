@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import Countdown from "react-countdown-now";
+import { useSprings, animated, interpolate } from 'react-spring'
+import { useGesture } from 'react-use-gesture'
 
 
 class Intro extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      mode:'intro',
+    }
+  }
   render(){
 
     return(

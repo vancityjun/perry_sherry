@@ -10,6 +10,7 @@ class Dashboard extends Component{
     super(props);
     this.ref = firebase.firestore().collection('rsvps');
     this.state = {
+      mode:'dashboard',
       rsvps: []
     };
     this.unsubscribe = null;
@@ -36,15 +37,26 @@ class Dashboard extends Component{
   }
   render(){
     return (
-              <tbody>
-                {this.state.rsvps.map(guest =>
-                  <tr>
-                    <td>{guest.firstname}</td>
-                    <td>{guest.lastname}</td>
-                    <td>{moment(guest.regdate.toDate()).calendar()}</td>
-                  </tr>
-                )}
-              </tbody>
+      <section className={this.state.mode + ' content'}>
+        <div className="list">
+          <table cellspacing="0">
+            <tbody>
+              <tr>
+                <th>first name</th>
+                <th>last name</th>
+                <th>register date</th>
+              </tr>
+              {this.state.rsvps.map(guest =>
+                <tr>
+                  <td>{guest.firstname}</td>
+                  <td>{guest.lastname}</td>
+                  <td>{moment(guest.regdate.toDate()).calendar()}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
     );
   }
 }

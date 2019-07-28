@@ -10,8 +10,10 @@ import firebase from 'firebase';
 // import {findDOMNode} from 'react-dom';
 import {useSpring, useTransition, animated} from 'react-spring';
 import { Spring, Transition, interpolate } from 'react-spring/renderprops';
+import MediaQuery from 'react-responsive';
 // import useRouter from './useRouter';
 import Topbar from './components/Topbar';
+import ToggleMenu from './components/ToggleMenu.js';
 import Footer from './components/Footer';
 import Intro from './pages/Intro';
 import Ourstory from './pages/Ourstory';
@@ -59,19 +61,44 @@ const Page = () => {
   );
 };
 
-
 class App extends Component{
   constructor(props){
     super(props);
+    this.state = {
+      mode:'topbar'
+    }
   }
+  
   componentDidMount = () =>{
-    initializeReactGA()
+    initializeReactGA();
+
+      $('.toggleButton').on('click', function(){
+        this.setState({
+          mode:'menu'
+        });
+    }.bind(this));
+
+     $('.toggleButton').on('click', function(){
+       $(this).toggleClass('active');
+       $('.menu').fadeToggle(600);
+    });
+
+    $('.menu a').click(function() {
+    $('.toggle-menu').removeClass('active');
+    $('.menu').fadeOut(400);
+  });
+
   }
   render(){
    return(
     // <Provider store={store}>
     <div className="App">
+      
       <Topbar/>
+      
+      <MediaQuery maxWidth={1023}>
+      <ToggleMenu/>
+      </MediaQuery>
       <Page/>
     </div>
     // </Provider>
