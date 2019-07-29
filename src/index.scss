@@ -63,6 +63,13 @@ input{
         margin-bottom: 0;
         margin-right: 10px;
     }
+    &[type="number"]{
+        height: auto;
+        width: auto;
+        background: transparent;
+        border-radius: 0;
+        border-bottom:2px solid #555;
+    }
     @media screen and (max-width: 576px){
         width: 100%;
     }
@@ -271,7 +278,7 @@ section{
     background: $background-color;
     text-align: center;
     padding: 50px;
-    div{
+    >div{
         line-height: 1.7;
         width: 60%;
         margin: 0 auto;
