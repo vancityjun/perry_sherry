@@ -12,8 +12,9 @@ class Rsvp extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			firstname:'',
-			lastname:'',
+			fullname:'',
+			phone:'',
+			email:'',
 			regdate:'',
 			mode:'rsvp',
 			rsvps: []
@@ -34,8 +35,9 @@ class Rsvp extends Component{
 	onSubmit(e){
 		e.preventDefault();
 		db.collection("rsvps").doc().set({
-	        firstname: this.state.firstname,
-	        lastname: this.state.lastname,
+	        fullname: this.state.fullname,
+	        phone: this.state.phone,
+	        email: this.state.email,
 	        regdate: new Date(),
 		})
 		.then(function() {
@@ -49,15 +51,6 @@ class Rsvp extends Component{
 	}
 
   render(){
-
-  	let rsvps = this.state.rsvps.map(guest => {
-  		return(
-  			<div key="{i}" className="lists">
-  				<span>{guest.firstname}</span>
-  				<span>{guest.lastname}</span>
-  			</div>  		
-  			);
-  		});
     return(
     	      <section className={this.state.mode + ' content'}>
     	<Header title={this.state.mode}/>
@@ -73,14 +66,40 @@ class Rsvp extends Component{
 	    	<h2>We can't wait to celebrate with you!</h2>
 
 	      <form onSubmit={this.onSubmit}>
-	      	<input type="text" name="firstname" placeholder="first name" value={this.state.firstname} onChange={this.onChange}/>
+	      	<input type="text" name="fullname" placeholder="full name" value={this.state.fullname} onChange={this.onChange}/>
 	      	<br/>
-	      	<input type="text" name="lastname" placeholder="last name" value={this.state.lastname} onChange={this.onChange}/>
+	      	<input type="tel" name="phone" placeholder="phone number" value={this.state.phone} onChange={this.onChange}/>
 	      	<br/>
+	      	<input type="email" name="email" placeholder="email address" value={this.state.email} onChange={this.onChange}/>
+	      	<br/>
+	      	<div className="cf">
+	      		<span className="fl">Do you want to receive our invitation card?</span>
+	      		<span className="fc fr">
+					<input type="checkbox" id="agree" name="agree" />
+					<label for="agree">agree</label>
+	      		</span>
+	      	</div>
+	      	<div className="cf">
+		      	<span className="fl">How many friends with you?</span>
+			      	<span className="fr">
+				      	<select name="extra" id="extra" className="">
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+				      	</select>
+			      	</span>
+			      	</div>
 	      	<button type="submit">Submit</button>
 	      </form>
     	</div>
-    	<span>{rsvps}</span>
     	</section>
       );
   }

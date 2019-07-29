@@ -46,7 +46,10 @@ body{
 	// background: $background-color;
 	color:#333;
   user-select: none;
-
+    font-size: 24px;
+}
+button, input, optgroup, select, textarea{
+    font-family: 'Cormorant Garamond', serif;
 }
 input{
     height: 50px;
@@ -54,9 +57,24 @@ input{
     margin-bottom:20px;
     border-radius: 4px;
     width:60%;
+    &[type="checkbox"]{
+        width: 20px;
+        height: 20px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
     @media screen and (max-width: 576px){
         width: 100%;
     }
+}
+select{
+    min-width:100px;
+    background: transparent;
+    border-bottom:2px solid #555;
+}
+option{
+    background:#f7d8c6;
+    text-align: center;
 }
 textarea{
     padding: 10px;
@@ -72,6 +90,25 @@ button{
     background: #ff5f5f;
     border-radius: 4px;
     color: #fff;
+}
+.cf:after{
+  content: '';
+  display: table;
+  clear: both;
+  }
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.fc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid{
+    display: grid;
 }
 .topbar{
 }
@@ -234,6 +271,12 @@ section{
     background: $background-color;
     text-align: center;
     padding: 50px;
+    div{
+        line-height: 1.7;
+        width: 60%;
+        margin: 0 auto;
+        text-align: left;
+    }
     @media screen and (max-width: 576px){
         padding: 25px;
     }

@@ -19,12 +19,13 @@ class Dashboard extends Component{
     onCollectionUpdate = (querySnapshot) => {
     const rsvps = [];
     querySnapshot.forEach((doc) => {
-      const { firstname, lastname, regdate } = doc.data();
+      const { fullname, phone, email, regdate } = doc.data();
       rsvps.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        firstname,
-        lastname,
+        fullname,
+        phone,
+        email,
         regdate,
       });
     });
@@ -42,14 +43,16 @@ class Dashboard extends Component{
           <table cellspacing="0">
             <tbody>
               <tr>
-                <th>first name</th>
-                <th>last name</th>
+                <th>name</th>
+                <th>phone</th>
+                <th>email</th>
                 <th>register date</th>
               </tr>
               {this.state.rsvps.map(guest =>
                 <tr>
-                  <td>{guest.firstname}</td>
-                  <td>{guest.lastname}</td>
+                  <td>{guest.fullname}</td>
+                  <td>{guest.phone}</td>
+                  <td>{guest.email}</td>
                   <td>{moment(guest.regdate.toDate()).calendar()}</td>
                 </tr>
               )}
