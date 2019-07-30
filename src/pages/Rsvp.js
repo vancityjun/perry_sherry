@@ -19,6 +19,8 @@ class Rsvp extends Component{
 			regdate:'',
 			agree:false,
 			extras:0,
+			address:'',
+			extraN:'',
 			mode:'rsvp',
 			rsvps: []
 		};
@@ -48,8 +50,21 @@ class Rsvp extends Component{
 	        phone: this.state.phone,
 	        email: this.state.email,
 	        agree: this.state.agree,
+	        address: this.state.address,
 	        regdate: new Date(),
 	        extras: this.state.extras,
+	        extraN:[
+	        	this.state.extra0,
+	        	this.state.extra1,
+	        	this.state.extra2,
+	        	this.state.extra3,
+	        	this.state.extra4,
+	        	this.state.extra5,
+	        	this.state.extra6,
+	        	this.state.extra7,
+	        	this.state.extra8,
+	        	this.state.extra9,
+	        ]
 		})
 		.then(function() {
 		    alert("Document successfully written!");
@@ -58,19 +73,20 @@ class Rsvp extends Component{
 		    console.error("Error writing document: ", error);
 		});
 	}
+	createInput = () => {
+	let guests = []
+	for (let i = 0; i < this.state.extras; ++i) {
+		guests.push(<input type="text" name={'extra' + i} id={'extra' + i} value={this.state.extra$i} onChange={this.onChange} key={i} placeholder="Full Name" />);
+	}
+	return guests
+	}
 	submit(){
 	}
- options = [
-  { label: "0", value: 0 },
-  { label: "1", value: 1 },
-  { label: "2", value: 2 },
-  { label: "3", value: 3 },
-  { label: "4", value: 4 },
-  { label: "5", value: 5 },
-  { label: "6", value: 6 },
-];
 
   render(){
+    const address = this.state.agree 
+	? <input type="text" name="address" value={this.state.address} onChange={this.onChange} placeholder="Your Address"/>: null;
+
     return(
     	      <section className={this.state.mode + ' content'}>
     	<Header title={this.state.mode}/>
@@ -92,17 +108,21 @@ class Rsvp extends Component{
 	      	<br/>
 	      	<input type="email" name="email" placeholder="email address" value={this.state.email} onChange={this.onChange}/>
 	      	<br/>
-	      	<div className="cf">
+	      	<div className="question cf">
 	      		<span className="fl">Do you want to receive our invitation card?</span>
 	      		<span className="fc fr">
 					<input type="checkbox" id="agree" name="agree" checked={this.state.agree} onChange={this.onChange} />
 					<label for="agree">agree</label>
 	      		</span>
 	      	</div>
-	      	<div className="cf">
+					{address}
+	      	<div className="question cf">
 		      	<span className="fl">How many friends with you?</span>
-			      	<input className="fr" type="number" id="extras" name="extras" value={this.state.extras} onChange={this.onChange} min="0" max="10" />
-			      	</div>
+		      	<input className="fr" type="number" id="extras" name="extras" value={this.state.extras} onChange={this.onChange} min="0" max="10" />
+	      	</div>
+	      	<div>
+	      	{this.createInput()}
+	      	</div>
 	      	<button type="submit">Submit</button>
 	      </form>
     	</div>
