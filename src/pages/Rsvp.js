@@ -20,9 +20,9 @@ class Rsvp extends Component{
 			agree:false,
 			extras:0,
 			address:'',
-			extraN:'',
+			extraN:[],
 			mode:'rsvp',
-			rsvps: []
+			rsvps: [],
 		};
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
@@ -53,18 +53,6 @@ class Rsvp extends Component{
 	        address: this.state.address,
 	        regdate: new Date(),
 	        extras: this.state.extras,
-	        extraN:[
-	        	this.state.extra0,
-	        	this.state.extra1,
-	        	this.state.extra2,
-	        	this.state.extra3,
-	        	this.state.extra4,
-	        	this.state.extra5,
-	        	this.state.extra6,
-	        	this.state.extra7,
-	        	this.state.extra8,
-	        	this.state.extra9,
-	        ]
 		})
 		.then(function() {
 		    alert("Document successfully written!");
@@ -72,11 +60,19 @@ class Rsvp extends Component{
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
 		});
+
 	}
+
 	createInput = () => {
 	let guests = []
 	for (let i = 0; i < this.state.extras; ++i) {
-		guests.push(<input type="text" name={'extra' + i} id={'extra' + i} value={this.state.extra$i} onChange={this.onChange} key={i} placeholder="Full Name" />);
+		guests.push(
+			<form action={this.onSubmit}>
+				<input type="text" name={'extra' + i} id={'extra' + i} value={this.state.extra$i} onChange={this.onChange} key={i} placeholder="Full Name" />
+				<button type="add">+</button>
+			</form>
+
+			);
 	}
 	return guests
 	}
