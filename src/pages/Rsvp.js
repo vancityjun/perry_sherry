@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import Header from '../components/Header'
 import Countdown from 'react-countdown-now'
 import firebase from 'firebase'
-import { render } from 'react-dom'
 import db from '../firebase/config.js'
-import ReactDom from 'react-dom'
 import Popup from 'react-popup'
 import Select from 'react-select'
 
@@ -17,30 +15,26 @@ class Rsvp extends Component {
       email: '',
       regdate: '',
       agree: false,
-      extras: 0,
+      extraFriendCount: 0,
+      extras: [],
       address: '',
-      extraN: [],
       mode: 'rsvp',
-      rsvps: [],
     }
-    this.onSubmit = this.onSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
   }
-  componentWillMount() {}
 
   componentDidMount() {}
 
-  onChange(e) {
-    const target = e.target
-    const value =
-      target.type === 'checkbox' ? target.checked : target.type === 'number' ? Number(target.value) : target.value
-
-    const name = target.name
+  onGuestNameChange = (value, i) => {
+    const newExtras = [...this.state.extras]
+    newExtras[i] = value
+    this.setState({ extras: newExtras })
+  }
+  onChangeCheckbox = e => {
     this.setState({
-      [name]: value,
+      agree: e.target.checked,
     })
   }
-  onSubmit(e) {
+  onSubmit = e => {
     e.preventDefault()
     db.collection('rsvps')
       .doc()
@@ -63,14 +57,12 @@ class Rsvp extends Component {
 
   createInput = () => {
     let guests = []
-    for (let i = 0; i < this.state.extras; ++i) {
+    for (let i = 0; i < this.state.extraFriendCount; ++i) {
       guests.push(
         <input
           type="text"
-          name={'extra' + i}
-          id={'extra' + i}
-          value={this.state.extra$i}
-          onChange={this.onChange}
+          value={this.state.extras[i]}
+          onChange={e => this.onGuestNameChange(e.target.value, i)}
           key={i}
           placeholder="Full Name"
         />
@@ -78,29 +70,29 @@ class Rsvp extends Component {
     }
     return guests
   }
-  async add(friendNames) {
-    const extraFriendIds = []
-    for (const friendName of friendNames) {
-      const docRef = await firebase
-        .firestore()
-        .collection('extras')
-        .add({ name: friendName })
-      extraFriendIds.push(docRef.id)
-    }
-
+  add = async e => {
+    e.preventDefault()
+    const friendNames = this.state.extras.slice(0, this.state.extraFriendCount)
     return firebase
       .firestore()
       .collection('rsvps')
-      .add({ name: 'mainFriend', extraFriendIds })
+      .add({
+        fullname: this.state.fullname,
+        phone: this.state.phone,
+        email: this.state.email,
+        agree: this.state.agree,
+        address: this.state.address,
+        regdate: new Date(),
+        extras: friendNames,
+      })
   }
 
   render() {
     const address = this.state.agree ? (
       <input
         type="text"
-        name="address"
         value={this.state.address}
-        onChange={this.onChange}
+        onChange={e => this.setState({ address: e.target.value })}
         placeholder="Your Address"
       />
     ) : null
@@ -118,35 +110,38 @@ class Rsvp extends Component {
             )}
           />
           <h2>We can't wait to celebrate with you!</h2>
-          <form action={this.add()}>
+          <form onSubmit={this.add}>
             <input
               type="text"
-              name="fullname"
               placeholder="full name"
               value={this.state.fullname}
-              onChange={this.onChange}
+              onChange={e => this.setState({ fullname: e.target.value })}
             />
             <br />
             <input
               type="tel"
-              name="phone"
               placeholder="phone number"
               value={this.state.phone}
-              onChange={this.onChange}
+              onChange={e => this.setState({ phone: e.target.value })}
             />
             <br />
             <input
               type="email"
-              name="email"
               placeholder="email address"
               value={this.state.email}
-              onChange={this.onChange}
+              onChange={e => this.setState({ email: e.target.value })}
             />
             <br />
             <div className="question cf">
               <span className="fl">Do you want to receive our invitation card?</span>
               <span className="fc fr">
-                <input type="checkbox" id="agree" name="agree" checked={this.state.agree} onChange={this.onChange} />
+                <input
+                  type="checkbox"
+                  id="agree"
+                  name="agree"
+                  checked={this.state.agree}
+                  onChange={this.onChangeCheckbox}
+                />
                 <label for="agree">agree</label>
               </span>
             </div>
@@ -158,8 +153,8 @@ class Rsvp extends Component {
                 type="number"
                 id="extras"
                 name="extras"
-                value={this.state.extras}
-                onChange={this.onChange}
+                value={this.state.extraFriendCount}
+                onChange={e => this.setState({ extraFriendCount: Number(e.target.value) })}
                 min="0"
                 max="10"
               />
