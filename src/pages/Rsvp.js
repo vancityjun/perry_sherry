@@ -10,6 +10,8 @@ class Rsvp extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      isSubmitted: false,
+      isSubmitting: false,
       fullname: '',
       phone: '',
       email: '',
@@ -72,6 +74,7 @@ class Rsvp extends Component {
   }
   add = async e => {
     e.preventDefault()
+    this.setState({ isSubmitting: true })
     const friendNames = this.state.extras.slice(0, this.state.extraFriendCount)
     return firebase
       .firestore()
@@ -84,6 +87,9 @@ class Rsvp extends Component {
         address: this.state.address,
         regdate: new Date(),
         extras: friendNames,
+      })
+      .then(() => {
+        this.setState({ isSubmitted: true })
       })
   }
 
@@ -110,58 +116,64 @@ class Rsvp extends Component {
             )}
           />
           <h2>We can't wait to celebrate with you!</h2>
-          <form onSubmit={this.add}>
-            <input
-              type="text"
-              placeholder="full name"
-              value={this.state.fullname}
-              onChange={e => this.setState({ fullname: e.target.value })}
-            />
-            <br />
-            <input
-              type="tel"
-              placeholder="phone number"
-              value={this.state.phone}
-              onChange={e => this.setState({ phone: e.target.value })}
-            />
-            <br />
-            <input
-              type="email"
-              placeholder="email address"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-            <br />
-            <div className="question cf">
-              <span className="fl">Do you want to receive our invitation card?</span>
-              <span className="fc fr">
-                <input
-                  type="checkbox"
-                  id="agree"
-                  name="agree"
-                  checked={this.state.agree}
-                  onChange={this.onChangeCheckbox}
-                />
-                <label for="agree">agree</label>
-              </span>
-            </div>
-            {address}
-            <div className="question cf">
-              <span className="fl">How many friends with you?</span>
+          {this.state.isSubmitted ? (
+            'THANK YOU FOR SUBMITTING'
+          ) : (
+            <form onSubmit={this.add}>
               <input
-                className="fr"
-                type="number"
-                id="extras"
-                name="extras"
-                value={this.state.extraFriendCount}
-                onChange={e => this.setState({ extraFriendCount: Number(e.target.value) })}
-                min="0"
-                max="10"
+                type="text"
+                placeholder="full name"
+                value={this.state.fullname}
+                onChange={e => this.setState({ fullname: e.target.value })}
               />
-            </div>
-            <div>{this.createInput()}</div>
-            <button type="submit">Submit</button>
-          </form>
+              <br />
+              <input
+                type="tel"
+                placeholder="phone number"
+                value={this.state.phone}
+                onChange={e => this.setState({ phone: e.target.value })}
+              />
+              <br />
+              <input
+                type="email"
+                placeholder="email address"
+                value={this.state.email}
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+              <br />
+              <div className="question cf">
+                <span className="fl">Do you want to receive our invitation card?</span>
+                <span className="fc fr">
+                  <input
+                    type="checkbox"
+                    id="agree"
+                    name="agree"
+                    checked={this.state.agree}
+                    onChange={this.onChangeCheckbox}
+                  />
+                  <label for="agree">agree</label>
+                </span>
+              </div>
+              {address}
+              <div className="question cf">
+                <span className="fl">How many friends with you?</span>
+                <input
+                  className="fr"
+                  type="number"
+                  id="extras"
+                  name="extras"
+                  value={this.state.extraFriendCount}
+                  onChange={e => this.setState({ extraFriendCount: Number(e.target.value) })}
+                  min="0"
+                  max="10"
+                />
+              </div>
+              <div>{this.createInput()}</div>
+              <button disable={this.state.isSubmitting} type="submit">
+                {this.state.isSubmitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     )
