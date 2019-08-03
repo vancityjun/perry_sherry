@@ -36,26 +36,6 @@ class Rsvp extends Component {
       agree: e.target.checked,
     })
   }
-  onSubmit = e => {
-    e.preventDefault()
-    db.collection('rsvps')
-      .doc()
-      .set({
-        fullname: this.state.fullname,
-        phone: this.state.phone,
-        email: this.state.email,
-        agree: this.state.agree,
-        address: this.state.address,
-        regdate: new Date(),
-        extras: this.state.extras,
-      })
-      .then(function() {
-        alert('Document successfully written!')
-      })
-      .catch(function(error) {
-        console.error('Error writing document: ', error)
-      })
-  }
 
   createInput = () => {
     let guests = []
@@ -86,6 +66,7 @@ class Rsvp extends Component {
         agree: this.state.agree,
         address: this.state.address,
         regdate: new Date(),
+        extraFriendCount: this.state.extraFriendCount,
         extras: friendNames,
       })
       .then(() => {
