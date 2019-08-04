@@ -1,44 +1,42 @@
-import React, {Component, useContext} from 'react';
+import React, { Component, useContext } from 'react'
 // import ReactDOM from 'react-dom';
-import {Switch, Route, BrowserRouter, NavLink, __RouterContext} from 'react-router-dom';
-import './App.css';
+import { Switch, Route, BrowserRouter, NavLink, __RouterContext } from 'react-router-dom'
+import './App.css'
 // import {Provider} from 'react-redux';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import $ from 'jquery';
-import ReactGA from 'react-ga';
-import firebase from 'firebase';
+import 'mapbox-gl/dist/mapbox-gl.css'
+import $ from 'jquery'
+import ReactGA from 'react-ga'
+import firebase from 'firebase'
 // import {findDOMNode} from 'react-dom';
-import {useSpring, useTransition, animated} from 'react-spring';
-import { Spring, Transition, interpolate } from 'react-spring/renderprops';
-import MediaQuery from 'react-responsive';
+import { useSpring, useTransition, animated } from 'react-spring'
+import { Spring, Transition, interpolate } from 'react-spring/renderprops'
+import MediaQuery from 'react-responsive'
 // import useRouter from './useRouter';
-import Topbar from './components/Topbar';
-import ToggleMenu from './components/ToggleMenu.js';
-import Footer from './components/Footer';
-import Intro from './pages/Intro';
-import Ourstory from './pages/Ourstory';
-import Photos from './pages/Photos';
-import Rsvp from './pages/Rsvp';
-import Location from './pages/Location';
-import Contact from './pages/Contactus';
-import After from './pages/After';
-import Admin from './pages/Admin';
-import Dashboard from './pages/Dashboard';
+import Topbar from './components/Topbar'
+import ToggleMenu from './components/ToggleMenu.js'
+import Footer from './components/Footer'
+import Intro from './pages/Intro'
+import Ourstory from './pages/Ourstory'
+import Photos from './pages/Photos'
+import Rsvp from './pages/Rsvp'
+import Location from './pages/Location'
+import Contact from './pages/Contactus'
+import After from './pages/After'
+import Admin from './pages/Admin'
+import Dashboard from './pages/Dashboard'
 
 export const initializeReactGA = () => {
-    ReactGA.initialize('UA-144107894-1');
-    ReactGA.pageview(window.location.pathname);
+  ReactGA.initialize('UA-144107894-1')
+  ReactGA.pageview(window.location.pathname)
 }
 
-
 const Page = () => {
-   const { location } = useContext(__RouterContext);
-  const transitions = useTransition(location, (location) => location.pathname, {
-    from: { opacity: 0, transition: '.2s'},
-    enter: { opacity: 1},
-    leave: { opacity: 1}
-  });
-
+  const { location } = useContext(__RouterContext)
+  const transitions = useTransition(location, location => location.pathname, {
+    from: { opacity: 0, transition: '.2s' },
+    enter: { opacity: 1 },
+    leave: { opacity: 1 },
+  })
 
   return (
     <>
@@ -58,51 +56,52 @@ const Page = () => {
         </animated.div>
       ))}
     </>
-  );
-};
+  )
+}
 
-class App extends Component{
-  constructor(props){
-    super(props);
+class App extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      mode:'topbar'
+      mode: 'topbar',
     }
   }
-  
-  componentDidMount = () =>{
-    initializeReactGA();
 
-      $('.toggleButton').on('click', function(){
+  componentDidMount = () => {
+    initializeReactGA()
+
+    $('.toggleButton').on(
+      'click',
+      function() {
         this.setState({
-          mode:'menu'
-        });
-    }.bind(this));
+          mode: 'menu',
+        })
+      }.bind(this)
+    )
 
-     $('.toggleButton').on('click', function(){
-       $(this).toggleClass('active');
-       $('.menu').fadeToggle(600);
-    });
+    $('.toggleButton').on('click', function() {
+      $(this).toggleClass('active')
+      $('.menu').fadeToggle(600)
+    })
 
-    $('.menu a').click(function() {
-    $('.toggle-menu').removeClass('active');
-    $('.menu').fadeOut(400);
-  });
-
+    $('.menu a').on('click', function() {
+      $('.toggleButton').removeClass('active')
+      $('.menu').fadeOut(400)
+    })
   }
-  render(){
-   return(
-    // <Provider store={store}>
-    <div className="App">
-      
-      <Topbar/>
-      
-      <MediaQuery maxWidth={1023}>
-      <ToggleMenu/>
-      </MediaQuery>
-      <Page/>
-    </div>
-    // </Provider>
-   ); 
+  render() {
+    return (
+      // <Provider store={store}>
+      <div className="App">
+        <Topbar />
+
+        <MediaQuery maxWidth={1023}>
+          <ToggleMenu />
+        </MediaQuery>
+        <Page />
+      </div>
+      // </Provider>
+    )
   }
 }
-export default App;
+export default App
