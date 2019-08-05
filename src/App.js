@@ -99,6 +99,7 @@ class App extends Component {
           <ToggleMenu />
         </MediaQuery>
         <Page />
+        <Footer />
       </div>
       // </Provider>
     )

@@ -10,31 +10,39 @@ class Location extends Component {
       mode: 'location',
       viewport: {
         width: '100%',
-        height: 400,
+        height: '100%',
         latitude: 49.125989126525326,
         longitude: -122.76792906734187,
-        zoom: 10,
+        zoom: 14,
         attributionControl: true,
       },
     }
   }
   render() {
     return (
-      <section className={this.state.mode + ' content'}>
+      <section className={this.state.mode + ' content cf'}>
         <Header title={this.state.mode} />
-        <ReactMapGL
-          mapboxApiAccessToken={
-            'pk.eyJ1IjoiZmtzZGoiLCJhIjoiY2p1MnpicHBpMGh0djQwbGs2bmxnZ3NjeiJ9.fyaa64gqxOni7RvrnwhgZQ'
-          }
-          {...this.state.viewport}
-          onViewportChange={viewport => this.setState({ viewport })}
-        >
-          <Marker latitude={49.125} longitude={-122.76} offsetLeft={-20} offsetTop={-10}>
-            <div className="locator">
-              <img src={require('../icons/location.svg')} alt="location" />
-            </div>
-          </Marker>
-        </ReactMapGL>
+        <div className="map fl">
+          <ReactMapGL
+            mapboxApiAccessToken={
+              'pk.eyJ1IjoiZmtzZGoiLCJhIjoiY2p1MnpicHBpMGh0djQwbGs2bmxnZ3NjeiJ9.fyaa64gqxOni7RvrnwhgZQ'
+            }
+            {...this.state.viewport}
+            onViewportChange={viewport => this.setState({ viewport })}
+          >
+            <Marker latitude={49.125} longitude={-122.76} offsetLeft={-20} offsetTop={-10}>
+              <div className="locator">
+                <img src={require('../icons/location.svg')} alt="location" />
+              </div>
+            </Marker>
+          </ReactMapGL>
+        </div>
+        <div className="info fl">
+          <span className="icon" />
+          <span>Northview Golf &amp; Country Club</span>
+          <span>6857 168 St, Surrey, BC, Canada</span>
+          <span>604.574.0324</span>
+        </div>
       </section>
     )
   }

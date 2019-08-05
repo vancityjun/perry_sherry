@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Tangerine&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Tangerine&display|Nunito&display=swap');
+$main-font: 'Nunito', sans-serif;
 $secondary-font: 'Tangerine', cursive;
 $background-color: #ffdbdb;
 $primary-color: #ff8484;
@@ -50,7 +51,8 @@ h5 {
   font-weight: 100;
 }
 body {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: $main-font;
+  font-weight: 100;
   // background: $background-color;
   color: #333;
   user-select: none;
@@ -61,7 +63,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: $main-font;
 }
 input {
   height: 50px;
@@ -336,12 +338,35 @@ section {
 .locator {
   width: 50px;
 }
+section.location {
+  .map {
+    width: 60%;
+    height: 50vh;
+  }
+  .info {
+    width: 40%;
+    padding: 20px;
+    span {
+      display: block;
+    }
+  }
+  @media screen and(max-width:576px) {
+    .map {
+      width: 100%;
+    }
+    .info {
+      width: 100%;
+      padding: 0;
+      margin-top: 20px;
+    }
+  }
+}
+// RSVP
 $timeline-border: 2px solid #555;
-
 .timeline {
   padding: 40px 0;
   .schedules {
-    width: 450px;
+    width: 500px;
     justify-content: unset;
     margin: 0 auto;
   }
@@ -371,7 +396,14 @@ $timeline-border: 2px solid #555;
     }
   }
 }
-
+// footer
+.footer {
+  width: 100%;
+  font-size: 18px;
+  background: #e2e2e2;
+  height: 80px;
+  color: #333;
+}
 //dashboard
 .dashboard {
   .list {
