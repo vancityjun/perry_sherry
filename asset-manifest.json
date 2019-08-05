@@ -1,18 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.5a379ec2.chunk.css",
-    "main.js": "/static/js/main.c86e0cf5.chunk.js",
-    "main.js.map": "/static/js/main.c86e0cf5.chunk.js.map",
+    "main.css": "/static/css/main.07d5528e.chunk.css",
+    "main.js": "/static/js/main.5acf82e1.chunk.js",
+    "main.js.map": "/static/js/main.5acf82e1.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
     "static/css/2.d72e3bfc.chunk.css": "/static/css/2.d72e3bfc.chunk.css",
-    "static/js/2.5a88074f.chunk.js": "/static/js/2.5a88074f.chunk.js",
-    "static/js/2.5a88074f.chunk.js.map": "/static/js/2.5a88074f.chunk.js.map",
+    "static/js/2.b7b561ea.chunk.js": "/static/js/2.b7b561ea.chunk.js",
+    "static/js/2.b7b561ea.chunk.js.map": "/static/js/2.b7b561ea.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.b3ad6e2fe351c002b3e6991f4360a32e.js": "/precache-manifest.b3ad6e2fe351c002b3e6991f4360a32e.js",
+    "precache-manifest.56cdb31a3fae5e43ba1a729e37cd3268.js": "/precache-manifest.56cdb31a3fae5e43ba1a729e37cd3268.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.d72e3bfc.chunk.css.map": "/static/css/2.d72e3bfc.chunk.css.map",
-    "static/css/main.5a379ec2.chunk.css.map": "/static/css/main.5a379ec2.chunk.css.map",
+    "static/css/main.07d5528e.chunk.css.map": "/static/css/main.07d5528e.chunk.css.map",
+    "static/media/014-wedding-dinner.svg": "/static/media/014-wedding-dinner.541a1ba9.svg",
+    "static/media/024-wine-1.svg": "/static/media/024-wine-1.a859d9b5.svg",
+    "static/media/034-rings.svg": "/static/media/034-rings.f1402ef8.svg",
+    "static/media/044-camera.svg": "/static/media/044-camera.6b4223a8.svg",
+    "static/media/050-wedding-couple.svg": "/static/media/050-wedding-couple.876d78e2.svg",
     "static/media/_DSC0434-Edit.jpg": "/static/media/_DSC0434-Edit.ba9d1cf5.jpg",
     "static/media/_DSC0448.jpg": "/static/media/_DSC0448.7b2c51c1.jpg",
     "static/media/_DSC0567-Edit.jpg": "/static/media/_DSC0567-Edit.69c4ac74.jpg",
@@ -29,6 +34,8 @@
     "static/media/_DSC2788-Edit.jpg": "/static/media/_DSC2788-Edit.43844a6b.jpg",
     "static/media/_DSC3155-Edit.jpg": "/static/media/_DSC3155-Edit.08a37fa4.jpg",
     "static/media/index.scss": "/static/media/rsvp-01.daa1b05c.png",
-    "static/media/location.svg": "/static/media/location.7abb3693.svg"
+    "static/media/high-heels.svg": "/static/media/high-heels.19aa14fc.svg",
+    "static/media/location.svg": "/static/media/location.7abb3693.svg",
+    "static/media/love.svg": "/static/media/love.6c358612.svg"
   }
 }
