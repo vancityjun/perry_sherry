@@ -336,6 +336,41 @@ section {
 .locator {
   width: 50px;
 }
+$timeline-border: 2px solid #555;
+
+.timeline {
+  padding: 40px 0;
+  .schedules {
+    width: 500px;
+    justify-content: unset;
+    margin: 0 auto;
+  }
+  .left {
+    border-right: $timeline-border;
+    margin-right: -1px;
+    // padding-right: 20px;
+    width: 50%;
+    .icon {
+      width: 100px;
+      margin-right: 20px;
+      padding: 10px;
+    }
+  }
+  .contents {
+    margin-left: 50px;
+    position: relative;
+    text-transform: capitalize;
+    &:before {
+      content: '';
+      border-bottom: $timeline-border;
+      display: block;
+      width: 40px;
+      position: absolute;
+      left: -50px;
+      bottom: calc(50% - 1px);
+    }
+  }
+}
 
 //dashboard
 .dashboard {

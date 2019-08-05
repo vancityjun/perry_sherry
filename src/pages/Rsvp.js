@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import Header from '../components/Header'
 import Countdown from 'react-countdown-now'
 import firebase from 'firebase'
+import Schedule from '../components/Schedule'
 import db from '../firebase/config.js'
 import Popup from 'react-popup'
 import Select from 'react-select'
-
+const timeline = []
 class Rsvp extends Component {
   constructor(props) {
     super(props)
@@ -87,6 +88,7 @@ class Rsvp extends Component {
     return (
       <section className={this.state.mode + ' content'}>
         <Header title={this.state.mode} />
+        <Schedule />
         <div className="formWrap">
           <Countdown
             date={new Date('October 05, 2019 16:00:00')}
