@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.fbefedcb.chunk.css",
+    "main.css": "/static/css/main.cdcbcfff.chunk.css",
     "main.js": "/static/js/main.58762887.chunk.js",
     "main.js.map": "/static/js/main.58762887.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
@@ -9,10 +9,10 @@
     "static/js/2.b7b561ea.chunk.js": "/static/js/2.b7b561ea.chunk.js",
     "static/js/2.b7b561ea.chunk.js.map": "/static/js/2.b7b561ea.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.bff71a6cc881d04424c81c83776b0ea7.js": "/precache-manifest.bff71a6cc881d04424c81c83776b0ea7.js",
+    "precache-manifest.caa435c3ca67a0a7151fc7df5a210ad8.js": "/precache-manifest.caa435c3ca67a0a7151fc7df5a210ad8.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.d72e3bfc.chunk.css.map": "/static/css/2.d72e3bfc.chunk.css.map",
-    "static/css/main.fbefedcb.chunk.css.map": "/static/css/main.fbefedcb.chunk.css.map",
+    "static/css/main.cdcbcfff.chunk.css.map": "/static/css/main.cdcbcfff.chunk.css.map",
     "static/media/014-wedding-dinner.svg": "/static/media/014-wedding-dinner.541a1ba9.svg",
     "static/media/024-wine-1.svg": "/static/media/024-wine-1.a859d9b5.svg",
     "static/media/034-rings.svg": "/static/media/034-rings.f1402ef8.svg",
