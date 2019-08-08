@@ -22,26 +22,37 @@ class Location extends Component {
     return (
       <section className={this.state.mode + ' content cf'}>
         <Header title={this.state.mode} />
-        <div className="map fl">
-          <ReactMapGL
-            mapboxApiAccessToken={
-              'pk.eyJ1IjoiZmtzZGoiLCJhIjoiY2p1MnpicHBpMGh0djQwbGs2bmxnZ3NjeiJ9.fyaa64gqxOni7RvrnwhgZQ'
-            }
-            {...this.state.viewport}
-            onViewportChange={viewport => this.setState({ viewport })}
-          >
-            <Marker latitude={49.125} longitude={-122.76} offsetLeft={-20} offsetTop={-10}>
-              <div className="locator">
-                <img src={require('../icons/location.svg')} alt="location" />
-              </div>
-            </Marker>
-          </ReactMapGL>
-        </div>
-        <div className="info fl">
-          <span className="icon" />
-          <span>Northview Golf &amp; Country Club</span>
-          <span>6857 168 St, Surrey, BC, Canada</span>
-          <span>604.574.0324</span>
+        <div className="wrapper">
+          <div className="golf">
+            <img src={require('../img/northview_golf.jpg')} alt="" className="image fl" />
+            <div className="info fl">
+              <span className="icon" />
+              <span className="em">Northview Golf &amp; Country Club</span>
+              <span>6857 168 St, Surrey, BC, Canada</span>
+              <span>604.574.0324</span>
+            </div>
+          </div>
+          <div className="map fl">
+            <ReactMapGL
+              mapboxApiAccessToken={
+                'pk.eyJ1IjoiZmtzZGoiLCJhIjoiY2p1MnpicHBpMGh0djQwbGs2bmxnZ3NjeiJ9.fyaa64gqxOni7RvrnwhgZQ'
+              }
+              {...this.state.viewport}
+              onViewportChange={viewport => this.setState({ viewport })}
+            >
+              <Marker latitude={49.125} longitude={-122.76} offsetLeft={-20} offsetTop={-10}>
+                <div className="locator">
+                  <img src={require('../icons/location.svg')} alt="location" />
+                </div>
+              </Marker>
+            </ReactMapGL>
+            <div className="info fl">
+              <span className="icon" />
+              <span className="em">Northview Golf &amp; Country Club</span>
+              <span>6857 168 St, Surrey, BC, Canada</span>
+              <span>604.574.0324</span>
+            </div>
+          </div>
         </div>
       </section>
     )

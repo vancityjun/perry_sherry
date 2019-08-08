@@ -1,4 +1,4 @@
-import React, { Component, useContext } from 'react'
+import React, { Component, useContext, useRef } from 'react'
 // import ReactDOM from 'react-dom';
 import { Switch, Route, BrowserRouter, NavLink, __RouterContext } from 'react-router-dom'
 import './App.css'
@@ -11,6 +11,7 @@ import firebase from 'firebase'
 import { useSpring, useTransition, animated } from 'react-spring'
 import { Spring, Transition, interpolate } from 'react-spring/renderprops'
 import MediaQuery from 'react-responsive'
+import scrollToComponent from 'react-scroll-to-component'
 // import useRouter from './useRouter';
 import Topbar from './components/Topbar'
 import ToggleMenu from './components/ToggleMenu.js'
@@ -98,7 +99,12 @@ class App extends Component {
         <MediaQuery maxWidth={1023}>
           <ToggleMenu />
         </MediaQuery>
-        <Page />
+        {/* <Page /> */}
+        <Intro />
+        <Ourstory />
+        <Photos />
+        <Rsvp />
+        <Location />
         <Footer />
       </div>
       // </Provider>
