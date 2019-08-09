@@ -64,18 +64,18 @@ class Topbar extends Component {
             </li>
             <li>
               <span
-                onClick={() => scrollToComponent(this.Rsvp, { offset: 0, align: 'top', duration: 300, ease: 'inExpo' })}
-              >
-                RSVP
-              </span>
-            </li>
-            <li>
-              <span
                 onClick={() =>
                   scrollToComponent(this.Location, { offset: 0, align: 'top', duration: 300, ease: 'inExpo' })
                 }
               >
                 location
+              </span>
+            </li>
+            <li>
+              <span
+                onClick={() => scrollToComponent(this.Rsvp, { offset: 0, align: 'top', duration: 300, ease: 'inExpo' })}
+              >
+                RSVP
               </span>
             </li>
             {/* <li><NavLink to="/after-wedding">after wedding</NavLink></li> */}

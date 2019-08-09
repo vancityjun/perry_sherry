@@ -103,8 +103,8 @@ class App extends Component {
         <Intro />
         <Ourstory />
         <Photos />
-        <Rsvp />
         <Location />
+        <Rsvp />
         <Footer />
       </div>
       // </Provider>
