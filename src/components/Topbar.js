@@ -25,12 +25,18 @@ class Topbar extends Component {
     $('.logo a').on('click', function() {
       $('.navList a').removeClass('active')
     })
-
-    scrollToComponent(this.Intro, { offset: 0, align: 'top', duration: 300, ease: 'inExpo' })
   }
   render() {
     return (
       <nav>
+        <h1 className="logo">
+          <span
+            onClick={() => scrollToComponent(this.Intro, { offset: 0, align: 'top', duration: 300, ease: 'inExpo' })}
+          >
+            Perry &amp; Sherry
+          </span>
+        </h1>
+
         <MediaQuery minWidth={1024}>
           <ul className="navList">
             <li>
@@ -50,17 +56,6 @@ class Topbar extends Component {
               >
                 photos
               </span>
-            </li>
-            <li>
-              <h1 className="logo">
-                <span
-                  onClick={() =>
-                    scrollToComponent(this.Intro, { offset: 0, align: 'top', duration: 300, ease: 'inExpo' })
-                  }
-                >
-                  Perry &amp; Sherry
-                </span>
-              </h1>
             </li>
             <li>
               <span

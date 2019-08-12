@@ -23,6 +23,11 @@ img {
   object-fit: cover;
   &.ril__image {
     width: auto;
+    height: auto;
+  }
+  &.react-parallax-bgimage {
+    width: 100% !important;
+    object-fit: contain;
   }
 }
 
@@ -216,37 +221,13 @@ section {
       }
       @media screen and (max-width: 576px) {
         height: 30vh;
+        .inner {
+          height: 30vh;
+        }
       }
       h1 {
         font-size: 6vw;
       }
-      // &.ourstory {
-      //   background: url(img/ourstory.png) no-repeat center center;
-      //   background-size: cover;
-      // }
-      // &.photos {
-      //   background: url(img/photos.png) no-repeat center center;
-      //   background-size: cover;
-      // }
-      // &.location {
-      //   background: url(img/location.png) no-repeat center center;
-      //   background-size: cover;
-      // }
-      // &.contact {
-      //   background: url(img/location.png) no-repeat center center;
-      //   background-size: cover;
-      // }
-      // &.after {
-      //   background: url(img/afterwedding.png) no-repeat center center;
-      //   background-size: cover;
-      // }
-      // &.rsvp {
-      //   background: url(img/rsvp-01.png) no-repeat center center;
-      //   background-size: cover;
-      //   .title {
-      //     text-transform: uppercase;
-      //   }
-      // }
       .title {
         text-transform: capitalize;
       }
@@ -275,6 +256,7 @@ section {
   background: url(img/main.jpg) no-repeat center center;
   background-size: cover;
   height: 100vh;
+  margin-bottom: 100px;
   .text {
     position: relative;
     transform: translate(-50%, -50%);
@@ -292,6 +274,9 @@ section {
       text-indent: 30px;
     }
   }
+}
+.cn {
+  word-break: normal;
 }
 //our story
 .ourstory {
@@ -341,6 +326,9 @@ section {
   }
   @media screen and (max-width: 576px) {
     padding: 25px;
+    .question {
+      width: 100%;
+    }
   }
   h2 {
     margin-bottom: 20px;
@@ -409,7 +397,7 @@ $timeline-border: 2px solid #555;
 .timeline {
   padding: 40px 0;
   .schedules {
-    width: 500px;
+    max-width: 500px;
     justify-content: unset;
     margin: 0 auto;
   }
@@ -422,6 +410,9 @@ $timeline-border: 2px solid #555;
       width: 100px;
       margin-right: 20px;
       padding: 10px;
+      @media screen and (max-width: 576px) {
+        width: 60px;
+      }
     }
   }
   .contents {
@@ -436,6 +427,12 @@ $timeline-border: 2px solid #555;
       position: absolute;
       left: -50px;
       bottom: calc(50% - 1px);
+    }
+    @media screen and (max-width: 576px) {
+      margin-left: 10px;
+      &:before {
+        display: none;
+      }
     }
   }
 }

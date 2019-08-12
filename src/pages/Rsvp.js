@@ -87,7 +87,7 @@ class Rsvp extends Component {
 
     return (
       <section className={this.state.mode + ' content'}>
-        <Header title={this.state.mode} />
+        <Header title={this.state.mode} image={require('../img/_DSC2680.jpg')} />
         <div className="wrapper">
           <Schedule />
           <div className="formWrap">

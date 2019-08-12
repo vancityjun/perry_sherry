@@ -9,10 +9,10 @@ const images = [
   require('../img/_DSC0916-Edit-6.jpg'),
   require('../img/_DSC0745-Edit.jpg'),
   require('../img/_DSC0668.jpg'),
-  require('../img/_DSC0448.jpg'),
-  require('../img/_DSC1019.jpg'),
   require('../img/_DSC3155-Edit.jpg'),
   require('../img/_DSC0434-Edit.jpg'),
+  require('../img/_DSC0448.jpg'),
+  require('../img/_DSC1019.jpg'),
   require('../img/_DSC2788-Edit.jpg'),
   require('../img/_DSC0567-Edit.jpg'),
   require('../img/_DSC2709-Edit.jpg'),
@@ -34,7 +34,7 @@ class Photos extends Component {
     const { photoIndex, isOpen } = this.state
     return (
       <section className={this.state.mode + ' content'}>
-        <Header title={this.state.mode} />
+        <Header title={this.state.mode} image={require('../img/_DSC0745-Edit.jpg')} />
         <div className="gallaryWrapper wrapper">
           <div className="imageBox vertical" onClick={() => this.setState({ photoIndex: 0, isOpen: true })}>
             <img src={require('../img/_DSC0848-Edit.jpg')} alt="" />

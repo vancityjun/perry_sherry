@@ -8,6 +8,7 @@ import $ from 'jquery'
 import ReactGA from 'react-ga'
 import firebase from 'firebase'
 // import {findDOMNode} from 'react-dom';
+import { Tween, Timeline } from 'react-gsap'
 import { useSpring, useTransition, animated } from 'react-spring'
 import { Spring, Transition, interpolate } from 'react-spring/renderprops'
 import MediaQuery from 'react-responsive'
@@ -16,12 +17,7 @@ import scrollToComponent from 'react-scroll-to-component'
 import Topbar from './components/Topbar'
 import ToggleMenu from './components/ToggleMenu.js'
 import Footer from './components/Footer'
-import Intro from './pages/Intro'
-import Ourstory from './pages/Ourstory'
-import Photos from './pages/Photos'
-import Rsvp from './pages/Rsvp'
-import Location from './pages/Location'
-import Contact from './pages/Contactus'
+import Main from './pages/Main'
 import After from './pages/After'
 import Admin from './pages/Admin'
 import Dashboard from './pages/Dashboard'
@@ -44,13 +40,7 @@ const Page = () => {
       {transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
           <Switch location={item}>
-            <Route exact path="/" component={Intro} />
-            <Route path="/ourstory" component={Ourstory} />
-            <Route path="/photos" component={Photos} />
-            <Route path="/rsvp" component={Rsvp} />
-            <Route path="/location" component={Location} />
-            <Route path="/contact-us" component={Contact} />
-            <Route path="/after-wedding" component={After} />
+            <Route exact path="/" component={Main} />
             <Route path="/admin" component={Admin} />
             <Route path="/dashboard" component={Dashboard} />
           </Switch>
@@ -71,15 +61,6 @@ class App extends Component {
   componentDidMount = () => {
     initializeReactGA()
 
-    $('.toggleButton').on(
-      'click',
-      function() {
-        this.setState({
-          mode: 'menu',
-        })
-      }.bind(this)
-    )
-
     $('.toggleButton').on('click', function() {
       $(this).toggleClass('active')
       $('.menu').fadeToggle(600)
@@ -94,18 +75,12 @@ class App extends Component {
     return (
       // <Provider store={store}>
       <div className="App">
-        <Topbar />
+        {/* <Topbar /> */}
 
         <MediaQuery maxWidth={1023}>
           <ToggleMenu />
         </MediaQuery>
-        {/* <Page /> */}
-        <Intro />
-        <Ourstory />
-        <Photos />
-        <Location />
-        <Rsvp />
-        <Footer />
+        <Page />
       </div>
       // </Provider>
     )

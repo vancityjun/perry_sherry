@@ -31,7 +31,7 @@ class Dashboard extends Component {
           agree,
           address,
           extraFriendCount,
-          extras: [],
+          extras,
         }
         // this.ref.doc(doc.id).collection('extras').get()
       )

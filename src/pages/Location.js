@@ -21,7 +21,7 @@ class Location extends Component {
   render() {
     return (
       <section className={this.state.mode + ' content cf'}>
-        <Header title={this.state.mode} />
+        <Header title={this.state.mode} image={require('../img/_DSC0668.jpg')} />
         <div className="wrapper">
           <div className="golf">
             <img src={require('../img/northview_golf.jpg')} alt="" className="image fl" />
