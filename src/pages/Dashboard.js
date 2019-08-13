@@ -58,17 +58,29 @@ class Dashboard extends Component {
                 <th>friends</th>
                 <th>friends name</th>
               </tr>
-              {this.state.rsvps.map(guest => (
-                <tr>
-                  <td rowspan={guest.extraFriendCount}>{guest.fullname}</td>
-                  <td rowspan={guest.extraFriendCount}>{guest.phone}</td>
-                  <td rowspan={guest.extraFriendCount}>{guest.email}</td>
-                  <td rowspan={guest.extraFriendCount}>{moment(guest.regdate.toDate()).calendar()}</td>
-                  <td rowspan={guest.extraFriendCount}>{guest.address}</td>
-                  <td rowspan={guest.extraFriendCount}>{guest.extraFriendCount}</td>
-                  <td>{guest.extras}</td>
-                </tr>
-              ))}
+              {this.state.rsvps.map(guest => {
+                return guest.extras.map((extra, i) => {
+                  if (i < 1) {
+                    return (
+                      <tr>
+                        <td rowspan={guest.extraFriendCount}>{guest.fullname}</td>
+                        <td rowspan={guest.extraFriendCount}>{guest.phone}</td>
+                        <td rowspan={guest.extraFriendCount}>{guest.email}</td>
+                        <td rowspan={guest.extraFriendCount}>{moment(guest.regdate.toDate()).calendar()}</td>
+                        <td rowspan={guest.extraFriendCount}>{guest.address}</td>
+                        <td rowspan={guest.extraFriendCount}>{guest.extraFriendCount}</td>
+                        <td>{guest.extras[i]}</td>
+                      </tr>
+                    )
+                  } else {
+                    return (
+                      <tr>
+                        <td>{guest.extras[i]}</td>
+                      </tr>
+                    )
+                  }
+                })
+              })}
             </tbody>
           </table>
         </div>
